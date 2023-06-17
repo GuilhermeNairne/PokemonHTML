@@ -1,0 +1,27 @@
+.pokemon-container {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;   
+    border-radius: 15px;
+    background: linear-gradient(to bottom, #4286f4, #7c00e6);
+    width: 200px;
+    height: 300px;
+    color: aliceblue;
+  }
+  
+
+.container{
+    padding: 20px;    
+    display: flex;   
+    flex-direction: row;    
+    border-width: 1px solid;
+    border-color: aqua;
+    /* background: aqua; */
+    margin-bottom: 50px;
+}
+
+.title{
+    text-align: center;
+    font-size: 50px;
+}
