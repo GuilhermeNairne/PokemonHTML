@@ -36,21 +36,23 @@ function main() {
     let parsedData = JSON.parse(data);
     let pokemons = parsedData.results;
   
-    pokemons.map((pokemon) => {
-      // Busca os detalhes individuais do Pokémon
-      let pokemonData = get(pokemon.url);
-      let parsedPokemonData = JSON.parse(pokemonData);
+    pokemons.map(async(pokemon) => {
+      let url = pokemon.url;
+
+      const response = await fetch(url);
+      const result = await response.json();
       
       // Cria um objeto com os dados do Pokémon necessários
-      let pokemonObj = {
-        nome: pokemon.name,
-        versao: parsedPokemonData.version,
-        altura: parsedPokemonData.height,
-        peso: parsedPokemonData.weight,
-        urlImagem: parsedPokemonData.sprites.front_default
+      const PokeData = {
+        name: result.forms[0].name,
+        dex: result.game_indices[9].game_index,
+        version: result.game_indices[9].version.name,
+        height: result.height,
+        weight: result.weight,
+        imgUrl: result.sprites.front_default,
       };
       
-      criaBox(pokemonObj);
+      criaBox(PokeData);
     });
   }
 
